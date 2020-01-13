@@ -7,7 +7,7 @@ import Painting from "../components/painting/Painting";
 import PaintingSkeleton from "../util/PaintingSkeleton";
 
 //Redux imports
-import { getPaintings } from "../redux/actions/dataActions";
+import { getPosts } from "../redux/actions/dataActions";
 import { connect } from "react-redux";
 
 class Home extends Component {
@@ -35,7 +35,7 @@ class Home extends Component {
 }
 
 Home.propTypes = {
-  getPaintings: PropTypes.func.isRequired,
+  getPosts: PropTypes.func.isRequired,
   data: PropTypes.object.isRequired
 };
 
@@ -43,4 +43,4 @@ const mapStateToProps = state => ({
   data: state.data
 });
 
-export default connect(mapStateToProps, { getPaintings })(Home);
+export default connect(mapStateToProps, { getPosts })(Home);

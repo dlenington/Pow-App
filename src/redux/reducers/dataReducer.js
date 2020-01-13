@@ -1,11 +1,11 @@
 import {
-  SET_PAINTINGS,
-  LIKE_PAINTING,
-  UNLIKE_PAINTING,
+  SET_POSTS,
+  LIKE_POST,
+  UNLIKE_POST,
   LOADING_DATA,
-  DELETE_PAINTING,
-  POST_PAINTING,
-  SET_PAINTING,
+  DELETE_POST,
+  POST_POST,
+  SET_POST,
   SUBMIT_COMMENT
 } from "../types";
 
@@ -22,48 +22,48 @@ export default function(state = initialState, action) {
         ...state,
         loading: true
       };
-    case SET_PAINTINGS:
+    case SET_POST:
       return {
         ...state,
         paintings: action.payload,
         loading: false
       };
-    case SET_PAINTING:
+    case SET_POST:
       return {
         ...state,
         painting: action.payload
       };
-    case LIKE_PAINTING:
-    case UNLIKE_PAINTING:
-      let index = state.paintings.findIndex(
-        painting => painting.paintingId === action.payload.paintingId
+    case LIKE_POST:
+    case UNLIKE_POST:
+      let index = state.posts.findIndex(
+        post => post.postId === action.payload.postId
       );
-      state.paintings[index] = action.payload;
-      if (state.painting.paintingId === action.payload.paintingId) {
-        state.painting.likeCount = action.payload.likeCount;
+      state.posts[index] = action.payload;
+      if (state.post.postId === action.payload.postId) {
+        state.post.likeCount = action.payload.likeCount;
       }
       return {
         ...state
       };
-    case DELETE_PAINTING:
-      let indexx = state.paintings.findIndex(
-        painting => painting.paintingId === action.payload
+    case DELETE_POST:
+      let indexx = state.posts.findIndex(
+        post => post.postId === action.payload
       );
-      state.paintings.splice(indexx, 1);
+      state.posts.splice(indexx, 1);
       return {
         ...state
       };
-    case POST_PAINTING:
+    case POST_POST:
       return {
         ...state,
-        paintings: [action.payload, ...state.paintings]
+        paintings: [action.payload, ...state.post]
       };
     case SUBMIT_COMMENT:
       return {
         ...state,
-        painting: {
-          ...state.painting,
-          comments: [action.payload, ...state.painting.comments]
+        post: {
+          ...state.post,
+          comments: [action.payload, ...state.post.comments]
         }
       };
     default:

@@ -15,7 +15,7 @@ import Paper from "@material-ui/core/Paper";
 import { TablePagination, ListItemText } from "@material-ui/core";
 
 //Redux stuff
-import { getPaintings } from "../redux/actions/dataActions";
+import { getPosts } from "../redux/actions/dataActions";
 import { connect } from "react-redux";
 import { PropTypes } from "prop-types";
 
@@ -34,7 +34,7 @@ class Admin extends Component {
     open: false
   };
   componentDidMount() {
-    this.props.getPaintings();
+    this.props.getPosts();
   }
 
   desc = (a, b, orderBy) => {
@@ -167,7 +167,7 @@ class Admin extends Component {
 }
 
 Admin.propTypes = {
-  getPaintings: PropTypes.func.isRequired,
+  getPosts: PropTypes.func.isRequired,
   data: PropTypes.object.isRequired
 };
 
@@ -176,5 +176,5 @@ const mapStateToProps = state => ({
 });
 
 export default withStyles(styles)(
-  connect(mapStateToProps, { getPaintings })(Admin)
+  connect(mapStateToProps, { getPosts })(Admin)
 );

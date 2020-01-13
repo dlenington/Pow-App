@@ -5,7 +5,7 @@ import MyButton from "../../util/MyButton";
 
 //Redux imports
 import { connect } from "react-redux";
-import { postPainting, clearErrors } from "../../redux/actions/dataActions";
+import { postPost, clearErrors } from "../../redux/actions/dataActions";
 
 //MUI Imports
 import Button from "@material-ui/core/Button";
@@ -69,7 +69,7 @@ class PostPainting extends Component {
   };
   handleSubmit = event => {
     event.preventDefault();
-    this.props.postPainting({ body: this.state.body });
+    this.props.postPost({ body: this.state.body });
   };
   render() {
     const { errors } = this.state;
@@ -136,7 +136,7 @@ class PostPainting extends Component {
 }
 
 PostPainting.propTypes = {
-  postPainting: PropTypes.func.isRequired,
+  postPost: PropTypes.func.isRequired,
   clearErrors: PropTypes.func.isRequired,
   UI: PropTypes.object.isRequired
 };
@@ -145,6 +145,6 @@ const mapStateToProps = state => ({
   UI: state.UI
 });
 
-export default connect(mapStateToProps, { postPainting, clearErrors })(
+export default connect(mapStateToProps, { postPost, clearErrors })(
   withStyles(styles)(PostPainting)
 );

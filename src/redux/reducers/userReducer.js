@@ -3,8 +3,8 @@ import {
   SET_AUTHENTICATED,
   SET_UNAUTHENTICATED,
   LOADING_USER,
-  LIKE_PAINTING,
-  UNLIKE_PAINTING,
+  LIKE_POST,
+  UNLIKE_POST,
   MARK_NOTIFICATIONS_READ,
   SET_ADMIN
 } from "../types";
@@ -42,23 +42,21 @@ export default function(state = initialState, action) {
         ...state,
         loading: true
       };
-    case LIKE_PAINTING:
+    case LIKE_POST:
       return {
         ...state,
         likes: [
           ...state.likes,
           {
             userHandle: state.credentials.handle,
-            paintingId: action.payload.paintingId
+            postId: action.payload.postId
           }
         ]
       };
-    case UNLIKE_PAINTING:
+    case UNLIKE_POST:
       return {
         ...state,
-        likes: state.likes.filter(
-          like => like.paintingId !== action.payload.paintingId
-        )
+        likes: state.likes.filter(like => like.postId !== action.payload.postId)
       };
     case MARK_NOTIFICATIONS_READ:
       state.notifications.forEach(not => (not.read = true));

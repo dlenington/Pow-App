@@ -13,10 +13,10 @@ export const LOADING_DATA = "LOADING_DATA";
 export const STOP_LOADING_UI = "STOP_LOADING_UI";
 
 // Data reducer types
-export const SET_PAINTINGS = "SET_PAINTINGS";
-export const SET_PAINTING = "SET_PAINTING";
-export const LIKE_PAINTING = "LIKE_PAINTING";
-export const UNLIKE_PAINTING = "UNLIKE_PAINTING";
-export const DELETE_PAINTING = "DELETE_PAINTING";
-export const POST_PAINTING = "POST_PAINTING";
+export const SET_POSTS = "SET_POSTS";
+export const SET_POST = "SET_POST";
+export const LIKE_POST = "LIKE_POST";
+export const UNLIKE_POST = "UNLIKE_POST";
+export const DELETE_POST = "DELETE_POST";
+export const POST_POST = "POST_POST";
 export const SUBMIT_COMMENT = "SUBMIT_COMMENT";

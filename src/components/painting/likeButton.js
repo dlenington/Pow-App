@@ -8,7 +8,7 @@ import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
 
 //Redux
 import { connect } from "react-redux";
-import { likePainting, unlikePainting } from "../../redux/actions/dataActions";
+import { likePost, unlikePost } from "../../redux/actions/dataActions";
 class LikeButton extends Component {
   state = {};
   likedPainting = () => {
@@ -23,10 +23,10 @@ class LikeButton extends Component {
   };
 
   likePainting = () => {
-    this.props.likePainting(this.props.paintingId);
+    this.props.likePost(this.props.paintingId);
   };
   unlikePainting = () => {
-    this.props.unlikePainting(this.props.paintingId);
+    this.props.unlikePost(this.props.paintingId);
   };
   render() {
     const { authenticated } = this.props.user;
@@ -52,8 +52,8 @@ class LikeButton extends Component {
 LikeButton.propTypes = {
   user: PropTypes.object.isRequired,
   paintingId: PropTypes.string.isRequired,
-  likePainting: PropTypes.func.isRequired,
-  unlikePainting: PropTypes.func.isRequired
+  likePost: PropTypes.func.isRequired,
+  unlikePost: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -61,7 +61,7 @@ const mapStateToProps = state => ({
 });
 
 const mapActionsToProps = {
-  likePainting,
-  unlikePainting
+  likePost,
+  unlikePost
 };
 export default connect(mapStateToProps, mapActionsToProps)(LikeButton);

@@ -21,7 +21,7 @@ import ChatIcon from "@material-ui/icons/Chat";
 
 //Redux stuff
 import { connect } from "react-redux";
-import { getPainting, clearErrors } from "../../redux/actions/dataActions";
+import { getPost, clearErrors } from "../../redux/actions/dataActions";
 
 const styles = theme => ({
   ...theme.spreadThis,
@@ -71,7 +71,7 @@ class PaintingDialog extends Component {
     window.history.pushState(null, null, newPath);
 
     this.setState({ open: true, oldPath, newPath });
-    this.props.getPainting(this.props.paintingId);
+    this.props.getPost(this.props.paintingId);
   };
   handleClose = () => {
     window.history.pushState(null, null, this.state.oldPath);
@@ -162,7 +162,7 @@ class PaintingDialog extends Component {
 }
 PaintingDialog.propTypes = {
   clearErrors: PropTypes.func.isRequired,
-  getPainting: PropTypes.func.isRequired,
+  getPost: PropTypes.func.isRequired,
   paintingId: PropTypes.string.isRequired,
   userHandle: PropTypes.string.isRequired,
   painting: PropTypes.object.isRequired,
@@ -175,7 +175,7 @@ const mapStateToProps = state => ({
 });
 
 const mapActionsToProps = {
-  getPainting,
+  getPost,
   clearErrors
 };
 

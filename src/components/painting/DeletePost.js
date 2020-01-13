@@ -11,7 +11,7 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DeleteOutline from "@material-ui/icons/DeleteOutlined";
 
 import { connect } from "react-redux";
-import { deletePainting } from "../../redux/actions/dataActions";
+import { deletePost } from "../../redux/actions/dataActions";
 
 const styles = {
   deleteButton: {
@@ -21,7 +21,7 @@ const styles = {
   }
 };
 
-class DeletePainting extends Component {
+class DeletePost extends Component {
   state = {
     open: false
   };
@@ -31,8 +31,8 @@ class DeletePainting extends Component {
   handleClose = () => {
     this.setState({ open: false });
   };
-  deletePainting = () => {
-    this.props.deletePainting(this.props.paintingId);
+  deletePost = () => {
+    this.props.deletePost(this.props.postId);
     this.setState({ open: false });
   };
   render() {
@@ -40,7 +40,7 @@ class DeletePainting extends Component {
     return (
       <Fragment>
         <MyButton
-          tip="Delete Painting"
+          tip="Delete Post"
           onClick={this.handleOpen}
           btnClassName={classes.deleteButton}
         >
@@ -57,7 +57,7 @@ class DeletePainting extends Component {
             <Button onClick={this.handleClose} color="primary">
               Cancel
             </Button>
-            <Button onClick={this.deletePainting} color="secondary">
+            <Button onClick={this.deletePost} color="secondary">
               Delete
             </Button>
           </DialogActions>
@@ -67,11 +67,9 @@ class DeletePainting extends Component {
   }
 }
 
-DeletePainting.propTypes = {
-  deletePainting: PropTypes.func.isRequired,
+DeletePost.propTypes = {
+  deletePost: PropTypes.func.isRequired,
   classes: PropTypes.object.isRequired,
-  paintingId: PropTypes.string.isRequired
+  postId: PropTypes.string.isRequired
 };
-export default connect(null, { deletePainting })(
-  withStyles(styles)(DeletePainting)
-);
+export default connect(null, { deletePost })(withStyles(styles)(DeletePost));

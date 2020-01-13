@@ -13,7 +13,7 @@ import Button from "@material-ui/core/Button";
 
 //Redux stuff
 import { connect } from "react-redux";
-import { getPainting } from "../redux/actions/dataActions";
+import { getPost } from "../redux/actions/dataActions";
 
 const styles = theme => ({
   ...theme.spreadThis
@@ -28,7 +28,7 @@ class TableDialog extends Component {
 
   handleOpen = () => {
     this.setState({ open: true });
-    this.props.getPainting(this.props.paintingId);
+    this.props.getPost(this.props.paintingId);
   };
 
   render() {
@@ -69,7 +69,7 @@ class TableDialog extends Component {
 
 TableDialog.propTypes = {
   painting: PropTypes.object.isRequired,
-  getPainting: PropTypes.func.isRequired
+  getPost: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -77,7 +77,7 @@ const mapStateToProps = state => ({
 });
 
 const mapActionsToProps = {
-  getPainting
+  getPost
 };
 
 export default connect(

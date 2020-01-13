@@ -5,7 +5,7 @@ import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import PropTypes from "prop-types";
 import MyButton from "../../util/MyButton";
-import DeletePainting from "./DeletePainting";
+import DeletePost from "./DeletePost";
 import PaintingDialog from "./PaintingDialog";
 //Redux
 import { connect } from "react-redux";
@@ -55,7 +55,7 @@ class Painting extends Component {
     } = this.props;
     const deleteButton =
       authenticated && userHandle === handle ? (
-        <DeletePainting paintingId={paintingId} />
+        <DeletePost paintingId={paintingId} />
       ) : null;
     return (
       <Card className={classes.card}>
