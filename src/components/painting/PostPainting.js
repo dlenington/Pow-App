@@ -79,7 +79,7 @@ class PostPainting extends Component {
     } = this.props;
     return (
       <Fragment>
-        <MyButton onClick={this.handleOpen} tip="Post a Painting!">
+        <MyButton onClick={this.handleOpen} tip="Make a post!">
           <AddIcon />
         </MyButton>
         <Dialog
@@ -95,16 +95,16 @@ class PostPainting extends Component {
           >
             <CloseIcon />
           </MyButton>
-          <DialogTitle>Post a new painting</DialogTitle>
+          <DialogTitle>New Post</DialogTitle>
           <DialogContent>
             <form onSubmit={this.handleSubmit}>
               <TextField
                 name="body"
                 type="text"
-                label="Painting"
+                label="Post"
                 multiline
                 rows="3"
-                placeholder="Painting here"
+                placeholder="Type here"
                 error={errors.body ? true : false}
                 helperText={errors.body}
                 className={classes.textField}
