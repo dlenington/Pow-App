@@ -10,8 +10,8 @@ import {
 } from "../types";
 
 const initialState = {
-  paintings: [],
-  painting: {},
+  posts: [],
+  post: {},
   loading: false
 };
 
@@ -22,16 +22,16 @@ export default function(state = initialState, action) {
         ...state,
         loading: true
       };
-    case SET_POST:
+    case SET_POSTS:
       return {
         ...state,
-        paintings: action.payload,
+        posts: action.payload,
         loading: false
       };
     case SET_POST:
       return {
         ...state,
-        painting: action.payload
+        post: action.payload
       };
     case LIKE_POST:
     case UNLIKE_POST:
@@ -56,7 +56,7 @@ export default function(state = initialState, action) {
     case POST_POST:
       return {
         ...state,
-        paintings: [action.payload, ...state.post]
+        posts: [action.payload, ...state.post]
       };
     case SUBMIT_COMMENT:
       return {

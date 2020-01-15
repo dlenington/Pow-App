@@ -47,22 +47,25 @@ export const getPost = postId => dispatch => {
     })
     .catch(err => console.log(err));
 };
-//Post a painting
+//Post a post
 export const postPost = newPost => dispatch => {
   dispatch({ type: LOADING_UI });
   axios
     .post("/posts", newPost)
     .then(res => {
+      console.log(res.data);
       dispatch({
         type: POST_POST,
         payload: res.data
       });
+      console.log("clear Errors");
       dispatch(clearErrors());
+      console.log("clear Errors called");
     })
     .catch(err => {
       dispatch({
         type: SET_ERRORS,
-        payload: err
+        payload: err.response.data
       });
     });
 };

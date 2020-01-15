@@ -19,6 +19,7 @@ export default function(state = initialState, action) {
         errors: action.payload
       };
     case CLEAR_ERRORS:
+      console.log("ui reducer clear errors entered");
       return {
         ...state,
         loading: false,
