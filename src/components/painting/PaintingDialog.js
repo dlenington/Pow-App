@@ -126,7 +126,7 @@ class PaintingDialog extends Component {
           <span>{commentCount} comments</span>
         </Grid>
         <hr className={classes.visibleSeparator} />
-        <CommentForm paintingId={postId} />
+        <CommentForm postId={postId} />
         <Comments comments={comments} />
       </Grid>
     );

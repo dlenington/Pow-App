@@ -34,7 +34,7 @@ class CommentForm extends Component {
   };
   handleSubmit = event => {
     event.preventDefault();
-    this.props.submitComment(this.props.paintingId, { body: this.state.body });
+    this.props.submitComment(this.props.postId, { body: this.state.body });
   };
   render() {
     const { classes, authenticated } = this.props;
@@ -72,7 +72,7 @@ class CommentForm extends Component {
 CommentForm.propTypes = {
   submitComment: PropTypes.func.isRequired,
   UI: PropTypes.object.isRequired,
-  paintingId: PropTypes.object.isRequired,
+  postId: PropTypes.object.isRequired,
   authenticated: PropTypes.bool.isRequired
 };
 
