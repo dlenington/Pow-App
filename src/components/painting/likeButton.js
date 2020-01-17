@@ -14,19 +14,17 @@ class LikeButton extends Component {
   likedPainting = () => {
     if (
       this.props.user.likes &&
-      this.props.user.likes.find(
-        like => like.paintingId === this.props.paintingId
-      )
+      this.props.user.likes.find(like => like.postId === this.props.postId)
     )
       return true;
     else return false;
   };
 
   likePainting = () => {
-    this.props.likePost(this.props.paintingId);
+    this.props.likePost(this.props.postId);
   };
   unlikePainting = () => {
-    this.props.unlikePost(this.props.paintingId);
+    this.props.unlikePost(this.props.postId);
   };
   render() {
     const { authenticated } = this.props.user;
@@ -51,7 +49,7 @@ class LikeButton extends Component {
 
 LikeButton.propTypes = {
   user: PropTypes.object.isRequired,
-  paintingId: PropTypes.string.isRequired,
+  postId: PropTypes.string.isRequired,
   likePost: PropTypes.func.isRequired,
   unlikePost: PropTypes.func.isRequired
 };

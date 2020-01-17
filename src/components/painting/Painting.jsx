@@ -55,7 +55,7 @@ class Painting extends Component {
     } = this.props;
     const deleteButton =
       authenticated && userHandle === handle ? (
-        <DeletePost paintingId={postId} />
+        <DeletePost postId={postId} />
       ) : null;
     return (
       <Card className={classes.card}>
@@ -78,7 +78,7 @@ class Painting extends Component {
             {dayjs(createdAt).fromNow()}
           </Typography>
           <Typography variant="body1">{body}</Typography>
-          <LikeButton paintingId={postId} />
+          <LikeButton postId={postId} />
           <span>{likeCount} Likes</span>
           <MyButton tip="comments">
             <ChatIcon color="primary" />
