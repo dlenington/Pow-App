@@ -39,12 +39,12 @@ class Painting extends Component {
     dayjs.extend(relativeTime);
     const {
       classes,
-      painting: {
+      post: {
         body,
         createdAt,
         userImage,
         userHandle,
-        paintingId,
+        postId,
         likeCount,
         commentCount
       },
@@ -55,7 +55,7 @@ class Painting extends Component {
     } = this.props;
     const deleteButton =
       authenticated && userHandle === handle ? (
-        <DeletePost paintingId={paintingId} />
+        <DeletePost paintingId={postId} />
       ) : null;
     return (
       <Card className={classes.card}>
@@ -78,14 +78,14 @@ class Painting extends Component {
             {dayjs(createdAt).fromNow()}
           </Typography>
           <Typography variant="body1">{body}</Typography>
-          <LikeButton paintingId={paintingId} />
+          <LikeButton paintingId={postId} />
           <span>{likeCount} Likes</span>
           <MyButton tip="comments">
             <ChatIcon color="primary" />
           </MyButton>
           <span>{commentCount} comments</span>
           <PaintingDialog
-            paintingId={paintingId}
+            postId={postId}
             userHandle={userHandle}
             openDialog={this.props.openDialog}
           />
@@ -97,7 +97,7 @@ class Painting extends Component {
 
 Painting.propTypes = {
   user: PropTypes.object.isRequired,
-  painting: PropTypes.object.isRequired,
+  post: PropTypes.object.isRequired,
   classes: PropTypes.object.isRequired,
   openDialog: PropTypes.bool
 };
