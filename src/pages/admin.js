@@ -64,11 +64,10 @@ class Admin extends Component {
   };
 
   render() {
-    const { paintings } = this.props.data;
+    const { posts } = this.props.data;
     const { page, rowsPerPage, dense, orderBy, order, open } = this.state;
     const emptyRows =
-      rowsPerPage -
-      Math.min(rowsPerPage, paintings.length - page * rowsPerPage);
+      rowsPerPage - Math.min(rowsPerPage, posts.length - page * rowsPerPage);
 
     //Table Methods
     const handleChangePage = (event, newPage) => {
@@ -110,33 +109,19 @@ class Admin extends Component {
               </TableRow>
             </TableHead>
             <TableBody>
-              {/* {paintings.map(painting => (
-                <TableRow key={painting.paintingId}>
-                  <TableCell component="th" scope="row">
-                    {painting.userHandle}
-                  </TableCell>
-                  <TableCell>{painting.body}</TableCell>
-                  <TableCell>{painting.createdAt}</TableCell>
-                </TableRow>
-              ))} */}
-
-              {this.stableSort(paintings, this.getSorting(order, orderBy))
+              {this.stableSort(posts, this.getSorting(order, orderBy))
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                .map((painting, index) => {
+                .map((post, index) => {
                   return (
-                    <TableRow key={painting.paintingId}>
-                      <TableCell
-                        id={painting.paintingId}
-                        component="th"
-                        scope="row"
-                      >
-                        {painting.userHandle}
+                    <TableRow key={post.postId}>
+                      <TableCell id={post.postId} component="th" scope="row">
+                        {post.userHandle}
                       </TableCell>
-                      <TableCell>{painting.body}</TableCell>
-                      <TableCell>{painting.createdAt}</TableCell>
+                      <TableCell>{post.body}</TableCell>
+                      <TableCell>{post.createdAt}</TableCell>
                       <TableCell>
                         <TableDialog
-                          paintingId={painting.paintingId}
+                          postId={post.postId}
                           open={open}
                           onClose={this.handleClose}
                         />
@@ -155,7 +140,7 @@ class Admin extends Component {
         <TablePagination
           rowsPerPageOptions={[5, 10, 25]}
           component="div"
-          count={paintings.length}
+          count={posts.length}
           rowsPerPage={rowsPerPage}
           page={page}
           onChangePage={handleChangePage}

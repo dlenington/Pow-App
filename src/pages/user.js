@@ -12,13 +12,13 @@ import { getUserData } from "../redux/actions/dataActions";
 class user extends Component {
   state = {
     profile: null,
-    paintingIdParam: null
+    postIdParam: null
   };
   componentDidMount() {
     const handle = this.props.match.params.handle;
-    const paintingId = this.props.match.params.paintingId;
+    const postId = this.props.match.params.postId;
 
-    if (paintingId) this.setState({ paintingIdParam: paintingId });
+    if (postId) this.setState({ postIdParam: postId });
     this.props.getUserData(handle);
     axios.get(`/user/${handle}`).then(res => {
       this.setState({
@@ -28,35 +28,26 @@ class user extends Component {
   }
 
   render() {
-    const { paintings, loading } = this.props.data;
-    const { paintingIdParam } = this.state;
+    const { posts, loading } = this.props.data;
+    const { postIdParam } = this.state;
 
-    const paintingsMarkup = loading ? (
+    const postsMarkup = loading ? (
       <PaintingSkeleton />
-    ) : paintings === null ? (
-      <p>No paintings from this user</p>
-    ) : !paintingIdParam ? (
-      paintings.map(painting => (
-        <Painting key={painting.paintingId} painting={painting} />
-      ))
+    ) : posts === null ? (
+      <p>No posts from this user</p>
+    ) : !postIdParam ? (
+      posts.map(post => <Painting key={post.postId} post={post} />)
     ) : (
-      paintings.map(painting => {
-        if (painting.paintingId !== paintingIdParam)
-          return <Painting key={painting.paintingId} painting={painting} />;
-        else
-          return (
-            <Painting
-              key={painting.paintingId}
-              painting={painting}
-              openDialog
-            />
-          );
+      posts.map(post => {
+        if (post.postId !== postIdParam)
+          return <Painting key={post.postId} post={post} />;
+        else return <Painting key={post.postId} post={post} openDialog />;
       })
     );
     return (
       <Grid container spacing={2}>
         <Grid item sm={8} xs={12}>
-          {paintingsMarkup}
+          {postsMarkup}
         </Grid>
         <Grid item sm={4} xs={12}>
           {this.state.profile === null ? (

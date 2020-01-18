@@ -11,6 +11,9 @@ import { getPosts } from "../redux/actions/dataActions";
 import { connect } from "react-redux";
 
 class Home extends Component {
+  componentDidMount() {
+    this.props.getPosts();
+  }
   render() {
     const { posts, loading } = this.props.data;
 

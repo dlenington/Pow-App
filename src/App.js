@@ -56,7 +56,7 @@ class App extends Component {
               <Route exact path="/admin" component={admin} />
               <Route
                 exact
-                path="/users/:handle/painting/:paintingId"
+                path="/users/:handle/post/:postId"
                 component={user}
               />
             </Switch>

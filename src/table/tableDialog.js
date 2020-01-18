@@ -28,12 +28,12 @@ class TableDialog extends Component {
 
   handleOpen = () => {
     this.setState({ open: true });
-    this.props.getPost(this.props.paintingId);
+    this.props.getPost(this.props.postId);
   };
 
   render() {
     const {
-      painting: { paintingId, body, createdAt, userHandle }
+      post: { postId, body, createdAt, userHandle }
     } = this.props;
 
     const { open } = this.state;
@@ -68,12 +68,12 @@ class TableDialog extends Component {
 }
 
 TableDialog.propTypes = {
-  painting: PropTypes.object.isRequired,
+  post: PropTypes.object.isRequired,
   getPost: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
-  painting: state.data.painting
+  post: state.data.post
 });
 
 const mapActionsToProps = {

@@ -77,9 +77,9 @@ class Notifications extends Component {
                 component={Link}
                 color="default"
                 variant="body1"
-                to={`/users/${not.recipient}/painting/${not.paintingId}`}
+                to={`/users/${not.recipient}/post/${not.postId}`}
               >
-                {not.sender} {verb} your painting {time}
+                {not.sender} {verb} your post {time}
               </Typography>
             </MenuItem>
           );

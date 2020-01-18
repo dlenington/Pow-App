@@ -118,7 +118,7 @@ class PaintingDialog extends Component {
           </Typography>
           <hr className={classes.invisibleSeparator} />
           <Typography variant="body1">{body}</Typography>
-          <LikeButton paintingId={postId} />
+          <LikeButton postId={postId} />
           <span>{likeCount} likes</span>
           <MyButton tip="comments">
             <ChatIcon color="primary" />
@@ -134,7 +134,7 @@ class PaintingDialog extends Component {
       <Fragment>
         <MyButton
           onClick={this.handleOpen}
-          tip="Expand Painting"
+          tip="Expand Post"
           tipClassName={classes.expandButton}
         >
           <UnfoldMore color="primary" />
@@ -165,7 +165,7 @@ PaintingDialog.propTypes = {
   getPost: PropTypes.func.isRequired,
   postId: PropTypes.string.isRequired,
   userHandle: PropTypes.string.isRequired,
-  painting: PropTypes.object.isRequired,
+  post: PropTypes.object.isRequired,
   UI: PropTypes.object.isRequired
 };
 
