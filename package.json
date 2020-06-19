@@ -35,5 +35,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://us-central1-pow-app-14a08.cloudfunctions.net/api"
+  "proxy": "http://localhost:5000/pow-app-14a08/us-central1/api"
 }

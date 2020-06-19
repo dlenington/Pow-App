@@ -14,7 +14,7 @@ class LikeButton extends Component {
   likedPainting = () => {
     if (
       this.props.user.likes &&
-      this.props.user.likes.find(like => like.postId === this.props.postId)
+      this.props.user.likes.find((like) => like.postId === this.props.postId)
     )
       return true;
     else return false;
@@ -51,15 +51,15 @@ LikeButton.propTypes = {
   user: PropTypes.object.isRequired,
   postId: PropTypes.string.isRequired,
   likePost: PropTypes.func.isRequired,
-  unlikePost: PropTypes.func.isRequired
+  unlikePost: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = state => ({
-  user: state.user
+const mapStateToProps = (state) => ({
+  user: state.user,
 });
 
 const mapActionsToProps = {
   likePost,
-  unlikePost
+  unlikePost,
 };
 export default connect(mapStateToProps, mapActionsToProps)(LikeButton);
